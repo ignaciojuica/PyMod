@@ -1,4 +1,4 @@
-import PyMod
+from pymodlib.PyMod import *
 #EXAMPLES
 # Call class PyMod
 c=PyMod
