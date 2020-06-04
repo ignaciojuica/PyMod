@@ -1,0 +1,37 @@
+import PyMod
+#EXAMPLES
+# Call class PyMod
+c=PyMod
+if c._server('192.168.1.151',502):  #  function _server put server online return Boolean
+    print('ok')
+else:
+    print('error1')
+print('conected to IP: %s PORT: %s '%c._server.remoteaddress) # _server.remoteaddress Modbus client IP and PORT
+lk=c.printmap()   #  function  printmap print server addresses given to LOGO HR IR coil DI addresses
+for m in lk: print(m)
+if c.forcecoil(9,2,True): #  function forcecoil(unique id , coil address, True or False )
+    print('coil 2 enabled')
+else:
+    print('error enabling cloil 2')
+r3=c.readcoil(9,10)        #  function readcoil(unique id , coil address ) return integer 1 is ON or 0 is OFF
+r4=c.readcoil(9,11)
+print(r3,r4)
+r2=c.readHR(5,14) #Read Holding Register  function readHR(unique id , Input Register address) return  integer  between -32768 and 32768
+print(r2)
+hr=[2,3,9]
+for i in hr:
+    rpw=c.writeHR(5,i,-12) #  Write Holding Register function writeHR(unique id , coil address, data to send between -32768 and 32768) 
+    if rpw:
+        print('data send!',i)
+    else:
+        print('failed writing HR!',i)
+zdh=[0,2,0,0,0,6,5,3,0,23,23,16] 
+#function sendbyte([bytes]) .... Only work with Threads ... send 12 length byte  Example byte=[0,1,2,3,4,5,6,7,8,9,10,11] only support len(byte)==12 values between -255 and 255 inclusive
+t = threading.Thread(target=c.sendbyte, args=(zdh,))
+t.start()
+time.sleep(2)
+t.run = False
+t.join()
+#    ._server.response    return an array from modbus client response
+print(c._server.response)
+#writeIR(ui,data_address,bt)  Write Input Register function writeIR(unique id , Input Register address, data to send between -32768 and 32768) 
