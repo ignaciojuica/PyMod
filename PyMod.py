@@ -133,7 +133,7 @@ class PyMod:
         def forcecoil(ui,data_address,bt):
             mt=PyMod.getmodbustype('ic')
             srvaddr=PyMod.getsrvaddress(mt,data_address,ui)
-            print(mt,ui,data_address,bt,srvaddr)
+            #print(mt,ui,data_address,bt,srvaddr)
             if bt is True:
                 dat=256
             else:
