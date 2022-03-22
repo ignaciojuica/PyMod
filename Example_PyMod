@@ -2,7 +2,7 @@ from pymodlib.PyMod import *
 #EXAMPLES
 # Call class PyMod
 c=PyMod
-if c._server('192.168.1.151',502):  #  function _server put server online return Boolean
+if c._server('192.168.1.151',502):  #  function _server put server online (ip of PC) return Boolean
     print('ok')
 else:
     print('error1')
