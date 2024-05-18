@@ -12,7 +12,7 @@ for m in lk: print(m)
 if c.forcecoil(9,2,True): #  function forcecoil(unique id , coil address, True or False )
     print('coil 2 enabled')
 else:
-    print('error enabling cloil 2')
+    print('error enabling coil 2')
 r3=c.readcoil(9,10)        #  function readcoil(unique id , coil address ) return integer 1 is ON or 0 is OFF
 r4=c.readcoil(9,11)
 print(r3,r4)
